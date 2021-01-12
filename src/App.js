@@ -51,14 +51,39 @@ class App extends React.Component {
     });
   }
 
+
+  handleItemAdd = (itemName) => {
+    const item = {
+      name: itemName,
+      id: this.state.tasks.length,
+      completed: false
+    };
+    const newTasks = [...this.state.tasks, item];
+
+    this.setState({
+      tasks: newTasks
+    });
+  }
+
+
+  handleItemCompleted = () => {
+    const newTasks = this.state.tasks.filter(item=>{
+      return(!item.completed);
+    });
+
+    this.setState({
+      tasks: newTasks
+    })
+  }
+
   render() {
     return (
       <div>
         <div>
           <h2>Todo:</h2>
-          <TotoForm />
+          <TotoForm handleItemAdd={this.handleItemAdd}/>
         </div>
-        <TotoList tasks={this.state.tasks} handleItemToggle={this.handleItemToggle}/>
+        <TotoList tasks={this.state.tasks} handleItemCompleted={this.handleItemCompleted} handleItemToggle={this.handleItemToggle}/>
       </div>
     );
   }

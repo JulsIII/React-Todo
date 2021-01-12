@@ -3,6 +3,10 @@ import Todo from "./Todo";
 
 const TodoList = props => {
 
+const handleClick = ()=> {
+    props.handleItemCompleted();
+}
+
     return (
 
         <div>
@@ -10,7 +14,7 @@ const TodoList = props => {
             {props.tasks.map(item => (
                 <Todo handleItemToggle={props.handleItemToggle} key={item.id} item={item} />
             ))}
-            <button>
+            <button onClick={handleClick}>
                 Clear Completed
             </button>
         </div>
