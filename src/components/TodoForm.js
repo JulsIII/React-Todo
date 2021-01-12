@@ -18,7 +18,6 @@ constructor(){
 
     handleSubmit = (e) => {
         e.preventDefault();
-
         this.props.handleItemAdd(this.state.inputValue);
         this.setState({
             inputValue:""
